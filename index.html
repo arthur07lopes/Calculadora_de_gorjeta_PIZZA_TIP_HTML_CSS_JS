@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora educativa de gorjetas com visual inspirado em pizzarias.">
+    <title>Pizza Tip | Calculadora de Gorjetas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="calculadoragorjeta.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Pular para o conteúdo principal</a>
+
+    <header class="site-header">
+        <a class="brand" href="#main" aria-label="Pizza Tip - início">
+            <span class="brand-mark" aria-hidden="true">
+                <span class="mark-blue"></span>
+                <span class="mark-red"></span>
+            </span>
+            <span class="brand-copy">
+                <strong>PIZZA TIP</strong>
+                <span>CONTA CLARA. GORJETA JUSTA.</span>
+            </span>
+        </a>
+        <div class="header-actions">
+            <p class="header-note">PROJETO EDUCATIVO <span aria-hidden="true">/</span> NÃO OFICIAL</p>
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Ativar tema escuro"
+                aria-pressed="false"
+            >
+                <span class="theme-icon" aria-hidden="true">☾</span>
+                <span class="theme-label">Tema escuro</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main" class="layout">
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">PAINEL DE CONTA <span aria-hidden="true">•</span> VERSÃO 1.0</p>
+            <h1 id="page-title">Uma boa pizza.<br><span>Uma conta clara.</span></h1>
+            <p class="lead">
+                Calcule a gorjeta, confira o total e divida a conta entre as pessoas.
+                Sem contas de cabeça e sem complicação.
+            </p>
+            <div class="promo-badge"><span aria-hidden="true">✦</span> PIZZA BOA. CONTA DIVIDIDA.</div>
+
+            <figure class="pizza-photo">
+                <img
+                    src="https://cdn.dominosmedia.co.uk/i/dominos/1472%20Domino%27s%20Student_108_Pizza%20Porn?fmt=webp&amp;qlt=75&amp;w=3840"
+                    alt="Pizza assada com queijo, cogumelos, presunto e cebola roxa sobre uma tábua; uma caixa azul da Domino's aparece ao fundo."
+                    loading="lazy"
+                >
+                <figcaption>
+                    Fotografia real do portal de mídia da Domino's. A imagem é carregada pela web.
+                </figcaption>
+            </figure>
+
+            <div class="brand-note">
+                <span class="brand-note-bar" aria-hidden="true"></span>
+                <p>
+                    Visual inspirado nas cores da Domino's Pizza. Este é um exercício independente,
+                    sem vínculo oficial com a marca. A tipografia é carregada pela web.
+                </p>
+            </div>
+        </section>
+
+        <section class="calculator-panel" aria-labelledby="calc-title">
+            <div class="panel-kicker"><span class="status-dot" aria-hidden="true"></span> CALCULADORA</div>
+            <h2 id="calc-title">Feche a conta</h2>
+            <p class="panel-intro">Preencha os campos e selecione <strong>Calcular Gorjeta</strong>.</p>
+
+            <form id="tipForm">
+                <div class="form-field">
+                    <label for="billAmount">Valor da conta (R$)</label>
+                    <input
+                        id="billAmount"
+                        name="billAmount"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        inputmode="decimal"
+                        placeholder="Ex.: 89,90"
+                        value="89.90"
+                        required
+                        aria-describedby="billHelp"
+                    >
+                    <small id="billHelp">Informe um valor maior que zero. Exemplo: R$ 89,90.</small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="tipPercentage">Gorjeta</label>
+                        <select id="tipPercentage" name="tipPercentage">
+                            <option value="5">5%</option>
+                            <option value="10" selected>10%</option>
+                            <option value="12">12%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="numberOfPeople">Pessoas</label>
+                        <input
+                            id="numberOfPeople"
+                            name="numberOfPeople"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value="2"
+                            inputmode="numeric"
+                            required
+                            aria-describedby="peopleHelp"
+                        >
+                        <small id="peopleHelp">Quantidade para dividir a conta.</small>
+                    </div>
+                </div>
+
+                <button class="calculate-button" type="submit">Calcular Gorjeta</button>
+            </form>
+
+            <section class="results" aria-labelledby="results-title" aria-live="polite">
+                <h3 id="results-title">Resumo da conta</h3>
+                <dl class="result-list">
+                    <div class="result-row">
+                        <dt>Valor da gorjeta</dt>
+                        <dd id="tipAmount">R$ 8,99</dd>
+                    </div>
+                    <div class="result-row result-total">
+                        <dt>Total com gorjeta</dt>
+                        <dd id="totalAmount">R$ 98,89</dd>
+                    </div>
+                    <div class="result-row">
+                        <dt>Valor por pessoa</dt>
+                        <dd id="perPersonAmount">R$ 49,45</dd>
+                    </div>
+                </dl>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Projeto educativo independente. A gorjeta é opcional e a decisão é sua.</p>
+    </footer>
+</body>
+</html>
